@@ -1,0 +1,10 @@
+@import "../../assets/variables";
+
+.header{
+    background-color: $primaryGreen !important;
+    z-index: 1201 !important;
+}
+
+.MuiAppBar-colorPrimary{
+    background-color: $primaryGreen !important;
+}

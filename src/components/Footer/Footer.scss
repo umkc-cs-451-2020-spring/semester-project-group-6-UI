@@ -1,0 +1,12 @@
+@import "../../assets/variables";
+
+.footer{
+    top: unset !important;
+    bottom: 0;
+    z-index: 1200 !important;
+    background-color: $primaryGreen !important;
+}
+
+.footer span{
+    margin: auto;
+}

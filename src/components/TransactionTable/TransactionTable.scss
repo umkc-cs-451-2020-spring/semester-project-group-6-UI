@@ -1,0 +1,28 @@
+@import "../../assets/variables";
+
+.headerRow:first-letter{
+    text-transform: capitalize;
+}
+.transPaper{
+    max-width: 80%;
+    
+}
+.transactions{
+    margin-left: auto !important;
+    margin-right: auto;
+}
+.transTable{
+    max-height: 440px !important;
+}
+.headerRow{
+    background-color: $primaryGreen !important;
+    color: white !important;
+}
+.paginationRow{
+    background-color: $primaryGreen !important;
+    color: white !important;
+}
+.title{
+   // color: $primaryGreen !important;
+    padding-bottom: 15px !important;
+}

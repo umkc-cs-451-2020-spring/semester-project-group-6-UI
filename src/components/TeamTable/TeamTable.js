@@ -16,8 +16,12 @@ import PropTypes from "prop-types";
 
 import "./TeamTable.scss";
 
-class TeamTable extends Component{
-    constructor(props){
+type State = {
+    expanded : Boolean
+}
+
+class TeamTable extends Component<State>{
+    constructor(props: any){
         super(props);
         this.state = {
             expanded : false

@@ -1,0 +1,128 @@
+[
+    {
+        "Account": "211111110",
+        "Date" : "11/03/2019",
+        "Type": "DR",
+        "Amount": 2.00,
+        "Description": "Starbucks"
+    },
+    {
+        "Account": "211111110",
+        "Date" : "11/03/2019",
+        "Type": "CR",
+        "Amount": 800.00,
+        "Description": "Payroll"
+    },
+    {
+        "Account": "211111110",
+        "Date" : "11/03/2019",
+        "Type": "DR",
+        "Amount": 8.00,
+        "Description": "Chipotle"
+    },
+    {
+        "Account": "211111110",
+        "Date" : "11/05/2019",
+        "Type": "DR",
+        "Amount": 10.00,
+        "Description": "ATM"
+    },
+    {
+        "Account": "211111110",
+        "Date" : "11/05/2019",
+        "Type": "DR",
+        "Amount": 32.00,
+        "Description": "Hoolihans"
+    },
+    {
+        "Account": "211111110",
+        "Date" : "11/05/2019",
+        "Type": "DR",
+        "Amount": 100.00,
+        "Description": "KCPL"
+    },
+    {
+        "Account": "211111110",
+        "Date" : "11/11/2019",
+        "Type": "DR",
+        "Amount": 9.00,
+        "Description": "Netflix"
+    },
+    {
+        "Account": "211111110",
+        "Date" : "11/09/2019",
+        "Type": "DR",
+        "Amount": 190.00,
+        "Description": "Google Fiber"
+    },
+    {
+        "Account": "211111110",
+        "Date" : "11/11/2019",
+        "Type": "DR",
+        "Amount": 350.00,
+        "Description": "Rent"
+    },
+    {
+        "Account": "211111110",
+        "Date" : "11/15/2019",
+        "Type": "DR",
+        "Amount": 2.00,
+        "Description": "Starbucks"
+    },
+    {
+        "Account": "211111110",
+        "Date" : "11/22/2019",
+        "Type": "CR",
+        "Amount": 750.00,
+        "Description": "Payroll"
+    },
+    {
+        "Account": "211111110",
+        "Date" : "11/25/2019",
+        "Type": "DR",
+        "Amount": 620.00,
+        "Description": "Commerce Bank Credit Card Payment"
+    },
+    {
+        "Account": "211111110",
+        "Date" : "11/28/2019",
+        "Type": "DR",
+        "Amount": 150.00,
+        "Description": "McFaddens"
+    },
+    {
+        "Account": "211111110",
+        "Date" : "11/28/2019",
+        "Type": "DR",
+        "Amount": 100.00,
+        "Description": "Price Chopper"
+    },
+    {
+        "Account": "211111110",
+        "Date" : "11/29/2019",
+        "Type": "CR",
+        "Amount": 50.00,
+        "Description": "Check from friend"
+    },
+    {
+        "Account": "211111110",
+        "Date" : "12/01/2019",
+        "Type": "CR",
+        "Amount": 800.00,
+        "Description": "Payroll"
+    },
+    {
+        "Account": "211111110",
+        "Date" : "12/01/2019",
+        "Type": "DR",
+        "Amount": 9.00,
+        "Description": "HyVee"
+    },
+    {
+        "Account": "211111110",
+        "Date" : "12/01/2019",
+        "Type": "DR",
+        "Amount": 14.00,
+        "Description": "McFaddens"
+    }
+]

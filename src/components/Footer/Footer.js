@@ -13,7 +13,7 @@ class Footer extends Component{
     render(){
         return(
             <AppBar className="footer" position="fixed">
-                <Typography align="center" variant="overline">
+                <Typography align="center" variant="overline" className="footer-text">
                 © {new Date().getFullYear()} UMKC CS451-r Team 6
                 </Typography>
             </AppBar>

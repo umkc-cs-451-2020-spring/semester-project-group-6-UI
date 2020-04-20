@@ -7,19 +7,19 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import TablePagination from '@material-ui/core/TablePagination';
-import Transaction from "../../entities/Transaction.js";
+import Notification from "../../entities/Notification.js";
 import Typography from "@material-ui/core/Typography";
 import Paper from '@material-ui/core/Paper';
 import PropTypes from "prop-types";
 
-import "./TransactionTable.scss";
+import "./NotificationTable.scss";
 
-class TransactionTable extends Component{
+class NotificationTable extends Component{
     constructor(props: any){
         super(props);
         this.state = {
             page: 0,
-            rowsPerPage: 10
+            rowsPerPage: 5
         };
     }
 
@@ -38,9 +38,9 @@ class TransactionTable extends Component{
 
     render(){
     
-        let transactions = this.props.transactions;
+        let notifications = this.props.notifications;
         let { page, rowsPerPage } = this.state;
-        let columnHeaders = new Transaction();
+        let columnHeaders = new Notification();
     
         return(
 
@@ -49,19 +49,19 @@ class TransactionTable extends Component{
                         className="title"
                         variant="h5"
                     >
-                    Transactions Summary
+                    Notifications
                 </Typography>
-                <Paper className = "transPaper" align="center">
-                    <TableContainer className="transTable" >
+                <Paper className = "notifyPaper" align="center">
+                    <TableContainer className="notifyTable" >
                         <Table stickyHeader aria-label="sticky table" >
-                            <TableHead className="tableHeader">
+                            <TableHead className="notifyTableHeader">
                                 <TableRow>
                                     {Object.keys(columnHeaders).map((keyName, i) => (
                                         keyName !== "id"
                                         ?
                                         <TableCell 
                                             key={i}
-                                            className="headerRow"
+                                            className="notifyHeaderRow"
                                         >
                                         {keyName}
                                         </TableCell>
@@ -70,11 +70,11 @@ class TransactionTable extends Component{
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {transactions.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((transaction, i) => {
+                                {notifications.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((notification, i) => {
                                     return (
                                         <TableRow hover role="checkbox" tabIndex={-1} key={i}>
                                             {Object.keys(columnHeaders).map((key, j) => {
-                                                const value = transaction[key];
+                                                const value = notification[key];
                                                 return (
                                                     key !== "id"
                                                     ?
@@ -93,9 +93,9 @@ class TransactionTable extends Component{
                     </TableContainer>
                     <TablePagination
                         rowsPerPageOptions={[10,25,100]}
-                        className="paginationRow"
+                        className="notifyPaginationRow"
                         component="div"
-                        count={transactions.length}
+                        count={notifications.length}
                         rowsPerPage={rowsPerPage}
                         page={page}
                         onChangePage={this.handleChangePage}
@@ -106,7 +106,7 @@ class TransactionTable extends Component{
         );
     }
 }
-export default TransactionTable;
-TransactionTable.propTypes = {
-    transactions: PropTypes.array,
+export default NotificationTable;
+NotificationTable.propTypes = {
+    notifications: PropTypes.array,
 }

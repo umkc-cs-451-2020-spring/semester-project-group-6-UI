@@ -11,3 +11,17 @@
 .MuiAppBar-colorPrimary{
     background-color: white !important;
 }
+.notification-btn{
+    margin-left: 55% !important;
+    width: 200px;
+    height: 50px;
+}
+.bell{
+    margin-right: 5% !important;
+}
+.MuiSvgIcon-colorPrimary{
+    color: $primaryGreen !important;
+}
+.MuiSvgIcon-colorSecondary{
+    color: $secondaryGreen !important;
+}

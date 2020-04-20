@@ -1,0 +1,11 @@
+@import "../../assets/variables";
+.notifyHeaderRow{
+    background-color: $primaryGreen !important;
+    border-bottom: 5px solid $secondaryGreen !important;
+    color: white !important;
+}
+.notifyPaginationRow{
+    background-color: $primaryGreen !important;
+    border-top: 5px solid $secondaryGreen !important;
+    color: white !important;
+}

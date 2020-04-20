@@ -16,10 +16,12 @@
 }
 .headerRow{
     background-color: $primaryGreen !important;
+    border-bottom: 5px solid $secondaryGreen !important;
     color: white !important;
 }
 .paginationRow{
     background-color: $primaryGreen !important;
+    border-top: 5px solid $secondaryGreen !important;
     color: white !important;
 }
 .title{

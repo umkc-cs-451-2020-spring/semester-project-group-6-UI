@@ -1,0 +1,53 @@
+[
+    {
+        "id": 1,
+        "transactionId": 1,
+        "rule": "outOfState"
+    },
+    {
+        "id": 2,
+        "transactionId": 3,
+        "rule": "lateNight"
+    },
+    {
+        "id": 3,
+        "transactionId": 4,
+        "rule": "lateNight"
+    },
+    {
+        "id": 4,
+        "transactionId": 2,
+        "rule": "deposit"
+    },
+    {
+        "id": 5,
+        "transactionId": 11,
+        "rule": "deposit"
+    },
+    {
+        "id": 6,
+        "transactionId": 15,
+        "rule": "deposit"   
+    },
+    {
+        "id": 7,
+        "transactionId": 16,
+        "rule": "deposit"
+    },
+    {
+        "id": 8,
+        "transactionId": 12,
+        "rule": "overBudget"
+    },
+    {
+        "id": 9,
+        "transactionId": 4,
+        "rule": "outOfState"
+    },
+    {
+        "id": 10,
+        "transactionId": 13,
+        "rule": "lateNight"
+    }
+
+]

@@ -11,6 +11,7 @@ export default class TransactionService {
 
         [...transactions].forEach(function(transaction){
             let trans = new Transaction();
+            trans.id = transaction.id;
             trans.account = transaction.Account;
             trans.date = transaction.Date;
             trans.type = transaction.Type;

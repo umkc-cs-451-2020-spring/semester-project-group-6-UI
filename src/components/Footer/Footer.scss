@@ -6,10 +6,12 @@
     z-index: 1200 !important;
     background-color: $primaryGreen !important;
 }
-
+.MuiAppBar-root.footer{
+    background-color: $primaryGreen !important;
+}
 .footer span{
     margin: auto;
 }
 .footer-text{
-    color: black !important;
+    color: white !important;
 }

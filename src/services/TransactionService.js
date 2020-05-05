@@ -15,7 +15,7 @@ export default class TransactionService {
             trans.account = transaction.Account;
             trans.date = transaction.Date;
             trans.type = transaction.Type;
-            trans.amount = transaction.Amount;
+            trans.amount = "$" + transaction.Amount.toFixed(2);
             trans.description = transaction.Description;
             transArray.push(trans);
         })

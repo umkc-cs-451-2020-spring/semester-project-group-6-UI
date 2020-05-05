@@ -13,7 +13,7 @@ export default class NotificationService {
             //handle notifications
             let notify = new Notification();
             notify.id = notification.id;
-            notify.transactionId = notification.transactionId;
+            notify.transaction = notification.transactionId;
             notify.rule = NotificationRules[notification.rule];
             notificationArr.push(notify);
         });

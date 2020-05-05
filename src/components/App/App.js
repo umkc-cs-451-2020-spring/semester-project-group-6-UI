@@ -4,7 +4,6 @@ import React, { Component, useContext } from 'react';
 import { hot } from "react-hot-loader";
 import Home from "../Home/Home.js";
 import UserProvider from "../../providers/UserProvider.jsx";
-//import {UserContext} from "../../providers/UserProvider.jsx";
 import { UserContext } from "../../providers/UserProvider.jsx";
 import LoginRoute from "../FirebaseLogin/LoginRoute.js";
 
@@ -17,8 +16,6 @@ class App extends Component {
   }
 
   render(){
-   // console.log(UserContext.Provider);
-   //console.log(useContext(UserContext));
    
     return (  
       <UserProvider>

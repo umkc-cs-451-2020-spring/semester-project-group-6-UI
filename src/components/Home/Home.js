@@ -19,9 +19,11 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Header from "../Header/Header.js";
 import PropTypes from "prop-types";
 import IconButton from "@material-ui/core/IconButton";
+import { Notification } from "../../entities/Notification.js";
 import {NotificationRules} from "../../enums/NotificationRules.js";
 import NotificationService from "../../services/NotificationService.js";
 import NotificationTable from "../NotificationTable/NotificationTable.js";
+import { Transaction } from "../../entities/Transaction.js";
 import TransactionTable from "../TransactionTable/TransactionTable.js";
 import TeamService from "../../services/TeamService.js";
 import TextField from "@material-ui/core/TextField";
@@ -41,13 +43,16 @@ class Home extends Component {
       notificationDialog: false,
       addDialog: false,
       typeSelect: "",
-      newTransaction : {}
+      newTransaction : {},
+      newTriggers : [],
+      newNotifications: false
     };
   }
 
   componentDidMount(){
     this.getTransactions();
     this.getNotifications();
+    this.setTriggers();
   }
 
   getTransactions(){
@@ -58,8 +63,25 @@ class Home extends Component {
     let notifications = new NotificationService().getNotifications();
     this.setState({notifications: notifications});
   }
+  setTriggers(){
+   
+    let trigArray = [];
+
+    Object.keys(NotificationRules).map((rule, i) => {
+      let trigger = {};
+      trigger["rule"]= rule;
+      trigger["description"] = NotificationRules[rule];
+      trigger["checked"] = false;
+      trigArray.push(trigger);
+     
+    });
+    console.log(trigArray);
+    this.setState({newTriggers: trigArray});
+  }
   openNotification=()=>{
-    this.setState({notificationDialog: true});
+    this.setState({
+      notificationDialog: true,
+      newNotifications : false});
   }
   handleDialogClose = () => {
     this.setState({
@@ -86,18 +108,73 @@ class Home extends Component {
   }
   addTransaction = () => {
     let newTransaction = this.state.newTransaction;
-    let transactions = [...this.state.transaction];
-    //add
+    let transactions = [...this.state.transactions];
+    let notifications = [...this.state.notifications];
+    let newTriggers = this.state.newTriggers;
+    let triggers = [];
+    
+    let newTrans = new Transaction();
+    newTrans.id = transactions.length + 1;
+    newTrans.account = newTransaction.account;
+    //get today's date
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); 
+    var yyyy = today.getFullYear();
+    today = mm + '/' + dd + '/' + yyyy;
+
+    newTrans.date = today;
+    newTrans.type = newTransaction.type;
+    newTrans.amount = newTransaction.amount;
+    newTrans.description = newTransaction.description;
+    //add transaction to new state object
+    transactions.push(newTrans);
+
+    //iterate triggers to check for notifications
+    [...newTriggers].forEach(function (trigger) {
+      if (trigger.checked){
+        triggers.push(trigger);
+      }
+    });
+    //add notifications
+    if (triggers.length > 0){
+      [...triggers].forEach(function (trig) {
+        let notification = new Notification();
+        notification.id = notifications.length + 1;
+        notification.transactionId = newTrans.id;
+        notification.rule= NotificationRules[trig.rule];
+        notifications.push(notification);
+      });
+    }
+    newTransaction = {};
+    this.setState({
+      newTransaction: newTransaction,
+      transactions : transactions,
+      notifications: notifications,
+      addDialog : false,
+      newNotifications : true
+    });
+  }
+
+  handleCheckBox = (event) => {
+    let newTriggers = [...this.state.newTriggers];
+   // console.log(event.target.id);
+    let trigIndex = newTriggers.findIndex(trig => trig.rule === event.target.id);
+   // console.log(trigger);
+    newTriggers[trigIndex].checked = event.target.checked;
+    this.setState({newTriggers: newTriggers});
+
   }
 
   render(){
-    const {notificationDialog, addDialog, transactions, notifications, typeSelect} = this.state;
+    const {notificationDialog, addDialog, transactions, notifications, typeSelect, newTriggers, newNotifications} = this.state;
    
     return (
       <div className="app">
         <Header
           openDialog={this.openNotification} 
           notifications={notifications}
+          newNotifications = {newNotifications}
           user={this.props.user}
         />
         <div className="main">
@@ -110,12 +187,6 @@ class Home extends Component {
             onClose={this.handleDialogClose}
           >
             <DialogTitle id="alert-dialog-title">
-             {/*  {addDialog ?
-               <Typography variant="h6" align="center">
-              Add Transaction
-              </Typography> 
-              "Add Transaction"
-              : null} */}
               <IconButton className="close-icon" onClick = {this.handleDialogClose}>
               <CloseIcon />
             </IconButton>
@@ -125,11 +196,12 @@ class Home extends Component {
               //Notifications
               <NotificationTable 
                 notifications={notifications}
+                transactions = {transactions}
               />
               :
               //Add Transaction Form -> Account num, date, Type, amount, description
               <div className="trans-fields">
-              <Typography variant="h6">Add Transaction</Typography>
+              <Typography variant="h5">New Transaction</Typography>
               <div>
                 <TextField 
                   autoFocus
@@ -180,19 +252,31 @@ class Home extends Component {
                 />
                 </div>
                 <div className="notification-rules">
-                <Typography>Notification Triggers</Typography>
-                {Object.keys(NotificationRules).map((rule, i) => (
-                  <div className="notify-checks" key={i}>
-                  <Checkbox
-                    className="check-input"
-                    checked={false}
-                    onChange={this.handleCheckbox}
-                    />
-                  <Typography variant="subtitle2">{NotificationRules[rule]}</Typography>
+                  <Typography variant="h6">Add Notification Triggers</Typography>
+                  <div className="notify-block">
+                    {newTriggers.map((trigger, i) => (
+                      <div className="notify-checks" key={i}>
+                        <Checkbox
+                          className="check-input"
+                          id={trigger.rule}
+                          checked={trigger.checked}
+                          onChange={this.handleCheckBox}
+                        />
+                      <Typography variant="subtitle2">{trigger.description}</Typography>
+                      </div>
+                    ))}
                   </div>
-                ))}
+                </div>
+                <div className="submit-div">
+                  <Button 
+                    className="submit-btn"
+                    onClick={this.addTransaction}
+                  >
+                  Submit
+                  </Button>
                 </div>
               </div>
+        
               }
             </DialogContent>
           </Dialog>

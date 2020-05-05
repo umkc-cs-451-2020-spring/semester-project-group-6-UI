@@ -5,7 +5,7 @@ export class Transaction {
     account : string = "";
     date : string = "";
     type : string = "";
-    amount : number = 0;
+    amount : string = "";
     description : string = "";
 }
 

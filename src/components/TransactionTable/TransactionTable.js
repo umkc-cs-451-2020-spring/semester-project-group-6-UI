@@ -57,7 +57,7 @@ class TransactionTable extends Component{
                             <TableHead className="tableHeader">
                                 <TableRow>
                                     {Object.keys(columnHeaders).map((keyName, i) => (
-                                        keyName !== "id"
+                                        keyName !== "id" && keyName !== "type"
                                         ?
                                         <TableCell 
                                             key={i}
@@ -76,11 +76,20 @@ class TransactionTable extends Component{
                                             {Object.keys(columnHeaders).map((key, j) => {
                                                 const value = transaction[key];
                                                 return (
-                                                    key !== "id"
+                                                    key !== "id" && key !== "type"
                                                     ?
-                                                    <TableCell key={j}>
-                                                        {value}
-                                                    </TableCell>
+                                                    key === "amount"
+                                                        ?
+                                                            <TableCell
+                                                            className={transaction.type === "CR" ? "credit-cell" : "debit-cell"} 
+                                                            key={j}>
+                                                            {transaction.type === "CR" ? "+" + value : "-" + value}
+                                                            </TableCell>
+                                                        :
+                                                        <TableCell key={j}>
+                                                            {value}
+                                                        </TableCell>
+
                                                     : null
                                                 )
                                                 

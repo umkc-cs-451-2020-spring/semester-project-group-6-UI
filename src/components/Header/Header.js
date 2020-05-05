@@ -23,6 +23,7 @@ class Header extends Component {
             hasNotifications: true
         };
     }
+    
     handleClick = (event) => {
         this.setState({anchorEl: event.currentTarget});
     }
@@ -38,7 +39,6 @@ class Header extends Component {
     }
     render() {
         const {anchorEl, hasNotifications } = this.state;
-        console.log(this.props.user);
         return (
             <div>
                 <AppBar className="header" position="fixed">
@@ -49,7 +49,7 @@ class Header extends Component {
                         <Button className="notification-btn" aria-controls="simple-menu" aria-haspopup="true" onClick={this.openNotifications}>
                             <NotificationsIcon 
                                 className="bell" 
-                                color={hasNotifications ? "secondary" : "disabled"} 
+                                color={this.props.newNotifications ? "secondary" : "disabled"} 
                                 //color="secondary"
                                 />
                             <Typography 

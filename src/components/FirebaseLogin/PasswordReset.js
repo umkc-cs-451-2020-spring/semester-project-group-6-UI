@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "@reach/router";
+import { auth } from "../../config/firebase";
 
 const PasswordReset = () => {
   const [email, setEmail] = useState("");
@@ -13,8 +14,7 @@ const PasswordReset = () => {
   };
   const sendResetEmail = event => {
     event.preventDefault();
-    auth
-      .sendPasswordResetEmail(email)
+    auth.sendPasswordResetEmail(email)
       .then(() => {
         setEmailHasBeenSent(true);
         setTimeout(() => {setEmailHasBeenSent(false)}, 3000);
@@ -54,6 +54,7 @@ const PasswordReset = () => {
           />
           <button
             className="w-full bg-blue-400 text-white py-3"
+            onClick={sendResetEmail}
           >
             Send me a reset link
           </button>

@@ -3,6 +3,7 @@ import { UserContext } from "../../providers/UserProvider";
 import { Router } from "@reach/router";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
+import PasswordReset from "./PasswordReset";
 import Home from "../Home/Home.js";
 
 function LoginRoute() {
@@ -16,6 +17,7 @@ function LoginRoute() {
     <Router>
       <SignUp path="signUp" />
       <SignIn path="/" />
+      <PasswordReset path="passwordReset" />
     </Router>
   );
 }

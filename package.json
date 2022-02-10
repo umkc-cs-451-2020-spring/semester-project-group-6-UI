@@ -12,7 +12,7 @@
     "axios": "^0.19.2",
     "firebase": "^7.14.2",
     "flow-bin": "^0.119.1",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.0",
     "react-app-rewire-hot-loader": "^2.0.1",
